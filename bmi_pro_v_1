@@ -14,7 +14,7 @@ print("X_train original shape", X_train.shape)
 print("y_train original shape", y_train.shape)
 # plt.interactive(False)
 
-#(แบ่งข้อมูล) วนเก็บค่า y_train ไว้ใน Class {} เป็นรูปแบบ Dictionary
+#(แบ่งข้อมูล) "Class {}" เป็น format เวลาแสดงผลมันจะเป็นคำว่า Class ตามด้วยค่า y_train[i]
 for i in range(9):
     plt.subplot(3,3,i+1)
     plt.imshow(X_train[i], cmap='gray', interpolation='none')
@@ -22,7 +22,7 @@ for i in range(9):
 
 plt.show()
 
-#เหมือนเป็นการกำหนดค่า x_test และ y_test เพื่อเตรียมทดสอบ
+#เหมือนเป็นการกำหนดค่า x_train , x_test และ y_train , y_test เพื่อเตรียมทดสอบ .reshape(60000, 784) เป็น matrix
 X_train = X_train.reshape(60000, 784)
 X_test = X_test.reshape(10000, 784)
 X_train = X_train.astype('float32')
@@ -60,7 +60,9 @@ prediction = model.predict_classes(X_test)
 correctResult = np.nonzero(prediction == y_test)[0]
 incorrectResult = np.nonzero(prediction != y_test)[0]
 
-#นำค่าที่ได้จากการเทสเข้าเป็นพารามิตเตอร์ enumerate เป็นการแจกแจง Index หลังจากแจกแจงแล้ว ก็เก็บค่าไว้ใน "Predicted {}, Class {}" เป็นรูปแบบ Dictionary
+#นำค่าที่ได้จากการเทสเข้าเป็นพารามิตเตอร์ enumerate เป็นการแจกแจง Index หลังจากแจกแจงแล้ว ก็แสดง
+#Predicted ตามด้วยค่า prediction[correct] และ Class ตามด้วยค่า y_test[correct]
+#.reshape(28, 28) เป็น matrix
 plt.figure()
 for i, correct in enumerate(correctResult[:9]):
     plt.subplot(3, 3, i + 1)
