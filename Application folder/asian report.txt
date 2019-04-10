@@ -1,0 +1,5 @@
+    0.495  veryFat
+    0.480  normal
+    0.020  fat
+    0.004  littleFat
+    0.000  thin
